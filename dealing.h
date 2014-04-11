@@ -1,0 +1,2 @@
+void dealHand();
+void displayHand();
