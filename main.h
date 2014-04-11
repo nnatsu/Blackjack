@@ -1,5 +1,7 @@
 #define MAX_PLAYERS 5
 #define MAX_CARDS 15
+#define INITIAL_MONEY 1000
+#define MIN_BET 5
 char handComp[MAX_CARDS];
 int numRounds;              //the number of rounds that have been played so far
 int numPlayers;             //the number of human players playing
