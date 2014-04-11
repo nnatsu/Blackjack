@@ -41,7 +41,7 @@ void betTaker(){
             validBet(players[i].bet, i);
         }
 
-        printf("Their bet was: %d\n", players[i].bet);
+        printf("Player %d bet $%d\n", i+1, players[i].bet);
         
     }
 }
