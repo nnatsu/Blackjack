@@ -21,10 +21,8 @@ int hitDecide() {
   }
   //return correct number
   if(c == 'y') {
-    printf("y\n");
     return 1;
   } else  {
-    printf("n\n");
     return 0;
   }
 }
