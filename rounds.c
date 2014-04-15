@@ -13,7 +13,7 @@ int playAgain() {
   //look for correct input
   while(x == 0) {
     if(c != 'y' && c != 'n') {
-      printf("I am sorry but your input was not correct. Would you like to play again\n");
+      printf("I am sorry but your input was not correct. Would you like to play again (Answer y or n) \n");
       scanf("%c", &c);
     } else {
       x = 1;
