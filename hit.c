@@ -27,3 +27,5 @@ int hitDecide() {
   }
 }
 
+void playerHit() {
+  
