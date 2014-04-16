@@ -8,50 +8,72 @@ int inHand[NUM_SUITS][NUM_RANKS] = {0};
 const char rankCode[] = {'2', '3', '4', '5', '6', '7', '8', '9', 't', 'j', 'q', 'k', 'a'};
 const char suitCode[] = {'C', 'D', 'H', 'S'};
 
-/***deals a specified number of cards***/
-void dealHand(){
+void dealCard(int p, int numCards){
     int rank, suit;
-    
     srand((unsigned) time(NULL));
     
-    //give each player two cards
-    for (int i = 0; i < numPlayers; i++){
-        int numCards = 1;
-        
+    //check to see if we are dealing a card to the computer
+    if (p == 100){
         while (numCards >= 0){
             suit = rand() % NUM_SUITS;      //pick random suit
             rank = rand() % NUM_RANKS;      //pick random rank
-            
+
+            //check to make sure the card hasnt already been dealt
+            if (inHand[suit][rank] == 0){
+                inHand[suit][rank] = 1;
+        
+                int i = 0;
+                
+                //find an emply space in their hand
+                while (handComp[i][0] != 0){
+                    i++;
+                }
+                
+                //put the card in the computers hand
+                if (handComp[i][0] == 0){
+                    handComp[i][0] = suitCode[suit];
+                    handComp[i][1] = rankCode[rank];
+                }
+                numCards--;
+            }
+        }
+    //otherwise we are dealing a card to a player
+    } else {
+        while (numCards >= 0){
+            suit = rand() % NUM_SUITS;      //pick random suit
+            rank = rand() % NUM_RANKS;      //pick random rank
+
             //check to make sure the card hasnt already been dealt
             if (inHand[suit][rank] == 0){
                 inHand[suit][rank] = 1;
                 
-                //put the card in the players hand
-                players[i].hand[numCards][0] = suitCode[suit];
-                players[i].hand[numCards][1] = rankCode[rank];
+                int i = 0;
                 
+                //find an emply space in their hand
+                while (players[p].hand[i][0] != 0){
+                    i++;
+                }
+        
+                //put the card in the players hand
+                if(players[p].hand[i][0] == 0){
+                    players[p].hand[i][0] = suitCode[suit];
+                    players[p].hand[i][1] = rankCode[rank];
+                }
                 numCards--;
             }
         }
     }
+}
+
+/***deals a specified number of cards***/
+void dealHand(){
+    //give each player two cards
+    for (int i = 0; i < numPlayers; i++){
+        dealCard(i, 1);
+    }
     
     //deal the computers initial hand
-    int numCards = 1;
-    while (numCards >= 0){
-        suit = rand() % NUM_SUITS;      //pick random suit
-        rank = rand() % NUM_RANKS;      //pick random rank
-        
-        //check to make sure the card hasnt already been dealt
-        if (inHand[suit][rank] == 0){
-            inHand[suit][rank] = 1;
-            
-            //put the card in the computers hand
-            handComp[numCards][0] = suitCode[suit];
-            handComp[numCards][1] = rankCode[rank];
-            
-            numCards--;
-        }
-    }
+    dealCard(100, 1);
 }
 
 /***prints out the cards each player currently has and one of the computers cards***/
