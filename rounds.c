@@ -28,3 +28,16 @@ int playAgain() {
     return 0;
   }
 }
+/*
+void displayFinalScore(): This function prints out the amount of money that each player has won or lost throughout the game. It also displays how many rounds were played. It returns nothing.
+*/
+void displayFinalScore() {
+  printf("Here are the final statistics for your game:\n");
+  int finalScore; //keep track of final score
+  for(int i = 0; i < numPlayers; i++) {
+    //loop through players and display their final score
+    finalScore = player[i].currentM;
+    printf("Player %d's final score is: %d\n", i+1, finalScore);
+  }
+  printf("You played %d rounds during this game\n");
+}

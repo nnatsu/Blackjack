@@ -1,1 +1,2 @@
 int playAgain();
+void displayFinalScore();
