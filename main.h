@@ -5,7 +5,7 @@
 #define NUM_SUITS 4
 #define NUM_RANKS 13
 char handComp[MAX_CARDS][2];
-int compCards = 2;
+int compCards;
 int numRounds;              //the number of rounds that have been played so far
 int numPlayers;             //the number of human players playing
 int playing;                //variable to hold whether or not to keep playing the game, 1=yes 0=no

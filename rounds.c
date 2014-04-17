@@ -41,3 +41,27 @@ void displayFinalScore() {
   }
   printf("You played %d rounds during this game\n");
 }
+/*
+Void reset(): This function takes in nothing and clears the players' and the computer's hands.
+*/
+void reset() {
+  //loop through players and clear their hands
+  for(j = 0; j < MAX_PLAYERS; j++) {
+    for(i = 0; i < MAX_CARDS; i++) {
+      players[j].hand[i][0] = '0';
+      players[j].hand[i][1] = '0';
+      players[j].bet = 0;
+      players[j].numCards = 0;
+    }
+  }
+  //clear computers hand and clear array of already dealt cards
+  for(i = 0; i < MAX_CARDS; i++) {
+    handComp[i][0] = '0';
+    handComp[i][1] = '0';
+    dealt[i][0] = '0';
+    dealt[i][1] = '0';
+  }
+  //reset number of computer cards
+  compCards = 0;
+}
+  
