@@ -27,5 +27,41 @@ int hitDecide() {
   }
 }
 
-void playerHit() {
-  
+/*
+void computerHit: This function determines if the computer needs another card. Keeps giving the computer another card until they have the minimum dictated by the rules.
+*/
+void computerHit() {
+  int total = 0;
+  total = totalValue(); //calculate the total value of the hand
+  while(total < 17) { //keep hitting until hand is greater than 17
+    dealCard(100, compCards);
+    compCards++;
+    total = totalValue();
+  }
+}
+/* 
+int cardValue(char c): this function takes in the letter representation of a card and returns its numerical value.
+*/
+int cardValue(char c) {
+  int value;
+  //find integer value
+  if('2' <= c <= '9') {
+    value = c - 48;
+  } else {
+    value = 10;
+  }
+  return value;
+}
+/*
+int totalValue() : this finds the total value of the hand and returns it.
+*/
+int totalValue(){
+    char c;
+    int total = 0;
+    //loop through cards and calculates their values
+    for(int i = 0; i < compCards; i++) {
+      c = handComp[i][0];
+      total += cardValue(c);
+    }
+    return total;
+}
