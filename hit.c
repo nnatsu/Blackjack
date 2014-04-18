@@ -33,10 +33,20 @@ void computerHit: This function determines if the computer needs another card. K
 void computerHit() {
   int total = 0;
   total = totalValue(); //calculate the total value of the hand
-  while(total < 17) { //keep hitting until hand is greater than 17
+  //dealer hits soft 17
+  if(level == 0) {
+    while(total <= 17) { //keep hitting until hand is greater than or equal to 17
     dealCard(100, compCards);
     compCards++;
     total = totalValue();
+    }
+    //dealer hits hard 17
+  } else if(level == 1) {
+    while(total < 17) {
+      dealCard(100, compCards);
+      compCards++;
+      total = totalValue();
+    }
   }
 }
 /* 
