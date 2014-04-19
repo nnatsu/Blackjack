@@ -31,6 +31,28 @@ void numberOfPlayers(){
     printf("Every player currently has $%d\n", players[0].currentM);
 }
 
+/***asks and stores at what level the human players want to play at***/
+void selectLevel(){
+    
+    char tempLevel;
+    
+    //ask user which level they want to play at
+    printf("Choose a level. Enter 0 for Easy or 1 for Hard. ");
+    scanf(" %c", &tempLevel);
+    
+    //make sure the value enteres is a 0 or 1
+    if (tempLevel == '0'){
+        levels = 0;
+        printf("You chose to play Easy\n");
+    } else if (tempLevel == '1'){
+        levels = 1;
+        printf("You chose to play Hard\n");
+    } else {
+        printf("Error: the level entered is not a valid level\n");
+        exit(0);
+    }
+}
+
 /***takes in and stores all human players bets***/
 void betTaker(){
     for (int i = 0; i < numPlayers; i++){
