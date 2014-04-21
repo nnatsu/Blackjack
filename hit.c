@@ -1,5 +1,9 @@
+#include <stdio.h>
 #include"hit.h"
 #include"main.h"
+#include "dealing.h"
+
+int printed;
 
 /*
 int hitDecide(): this function askes the user if they want to hit or not. Returns a 1 if they answer with a y, returns a 0 if they answer with a n.
@@ -9,12 +13,16 @@ int hitDecide() {
   char c;
   int x = 0;
   //take in input
-  scanf("%c", &c);
+  scanf(" %c", &c);
   //wait for acceptable input
   while(x == 0) {
     if(c != 'y' && c != 'n') {
-      printf("I am sorry but your input was not correct. Please try again:\n");
-      scanf("%c", &c);
+        if (printed == 0){
+            printf("I am sorry but your input was not correct. Please try again:\n");
+            printed++;
+        } else {
+            scanf("%c", &c);
+        }
     } else {
       x = 1;
     }
@@ -34,14 +42,14 @@ void computerHit() {
   int total = 0;
   total = totalValue(); //calculate the total value of the hand
   //dealer hits soft 17
-  if(level == 0) {
+  if(levels == 0) {
     while(total <= 17) { //keep hitting until hand is greater than or equal to 17
     dealCard(100, compCards);
     compCards++;
     total = totalValue();
     }
     //dealer hits hard 17
-  } else if(level == 1) {
+  } else if(levels == 1) {
     while(total < 17) {
       dealCard(100, compCards);
       compCards++;
