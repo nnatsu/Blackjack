@@ -16,6 +16,11 @@ struct player {
     int currentM;               //the amount of money the player currently has
     char hand[MAX_CARDS][2];    //the hands the player currently has
     int numCards;               //the number of cards that they player has been dealt
+    
+    /*** Connie: Additional things ***/
+    int id;             //Player id
+    int status;         //0 = bust, 1 = safe
+    int score;          //Score (if not bust)
 };
 
 struct player players[MAX_PLAYERS];     //array of players in game

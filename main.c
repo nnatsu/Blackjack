@@ -8,6 +8,8 @@
 #include "winnings.h"
 
 int main(){
+    //CONNIE init stuff used in evaluate.h
+    init_stat();
     //ask for number of players
     numberOfPlayers();
     //ask players to choose a level

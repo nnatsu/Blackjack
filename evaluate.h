@@ -1,8 +1,21 @@
 #ifndef _evaluate_h
 #define _evaluate_h
 
-void card_evaluator();
+typedef struct struct Stat;
 
-void compare_final_hands();
+struct Stat{
+    int stat;
+    int bet;
+    Stat *next;
+    Stat *prev;
+};
+
+Stat *head, *tail;
+
+void init_stat();
+
+void card_evaluator(player *p);
+
+void compare_final_hands(player *p, player *d);
 
 #endif
