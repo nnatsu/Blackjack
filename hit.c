@@ -18,7 +18,7 @@ int hitDecide() {
   while(x == 0) {
     if(c != 'y' && c != 'n') {
         if (printed == 0){
-            printf("I am sorry but your input was not correct. Please try again:\n");
+            printf("I am sorry but your input was not correct. Please try again. The game will wait until you provide correct input.\n");
             printed++;
         } else {
             scanf("%c", &c);
@@ -65,21 +65,29 @@ int cardValue(char c) {
   //find integer value
   if('2' <= c <= '9') {
     value = c - 48;
-  } else {
+  } else if (c == 't' || c == 'k' || c == 'j' || c == 'q' ){
     value = 10;
+  } else {
+    value = 11;
   }
   return value;
 }
 /*
 int totalValue() : this finds the total value of the hand and returns it.
 */
-int totalValue(){
+int totalValue() {
     char c;
-    int total = 0;
+    int total, numAce = 0;
     //loop through cards and calculates their values
     for(int i = 0; i < compCards; i++) {
       c = handComp[i][0];
+      if (c == 'a') {
+          numAce++;
+      }
       total += cardValue(c);
+      while (total > 21 && numAce > 0) {
+          total -= 10; //adjusts computer's total if they bust but can count an ace as 1 instead of 11
+      }
     }
     return total;
 }
