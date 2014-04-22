@@ -4,6 +4,7 @@
 #include "dealing.h"
 
 int printed;
+int numAce = 0;
 
 /*
 int hitDecide(): this function askes the user if they want to hit or not. Returns a 1 if they answer with a y, returns a 0 if they answer with a n.
@@ -41,20 +42,16 @@ void computerHit: This function determines if the computer needs another card. K
 void computerHit() {
   int total = 0;
   total = totalValue(); //calculate the total value of the hand
-  //dealer hits soft 17
-  if(levels == 0) {
-    while(total <= 17) { //keep hitting until hand is greater than or equal to 17
-    dealCard(100, compCards);
-    compCards++;
-    total = totalValue();
-    }
-    //dealer hits hard 17
-  } else if(levels == 1) {
+  //determines when the dealer shoulds hit
     while(total < 17) {
       dealCard(100, compCards);
       compCards++;
       total = totalValue();
     }
+  //if level is hard, dealer hits on soft 17s
+  if(levels == 1 && total == 17 && numAces > 0) {
+      dealCard(100, compCards);
+      compCards++;
   }
 }
 /* 
@@ -77,7 +74,8 @@ int totalValue() : this finds the total value of the hand and returns it.
 */
 int totalValue() {
     char c;
-    int total, numAce = 0;
+    int total =  0;
+    numAce = 0;
     //loop through cards and calculates their values
     for(int i = 0; i < compCards; i++) {
       c = handComp[i][0];
