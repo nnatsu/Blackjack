@@ -1,6 +1,5 @@
-
-#include<main.h>
-#include<rounds.h>
+#include"main.h"
+#include"rounds.h"
 
 /*
 int playAgain: Asks the users if they would like to play again. Returns 1 if they answer yes, returns 0 if they answer no.
