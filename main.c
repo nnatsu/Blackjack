@@ -1,3 +1,6 @@
+#ifndef MAIN_H
+#define MAIN_H
+
 #include <stdio.h>
 #include "main.h"
 #include "userInput.h"
@@ -32,3 +35,5 @@ int main(){
     }
     return 0;
 }
+
+#endif
