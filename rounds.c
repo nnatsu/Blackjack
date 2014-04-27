@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include"main.h"
 #include"rounds.h"
 
@@ -5,8 +6,10 @@
 int playAgain: Asks the users if they would like to play again. Returns 1 if they answer yes, returns 0 if they answer no.
 */ 
 int playAgain() {
-  printf("Do you want to play again? (Answer y or n)\n");
-  char c;
+    getchar();
+    printf("Do you want to play again? (Answer y or n)\n");
+    
+    char c;
   int x = 0;
   scanf("%c", &c);
   //look for correct input
@@ -20,10 +23,8 @@ int playAgain() {
   }
   //return yes or no
   if(c == 'y') {
-    printf("y\n");
     return 1;
   } else  {
-    printf("n\n");
     return 0;
   }
 }
@@ -35,10 +36,10 @@ void displayFinalScore() {
   int finalScore; //keep track of final score
   for(int i = 0; i < numPlayers; i++) {
     //loop through players and display their final score
-    finalScore = player[i].currentM;
+    finalScore = players[i].currentM;
     printf("Player %d's final score is: %d\n", i+1, finalScore);
   }
-  printf("You played %d rounds during this game\n");
+  printf("You played %d rounds during this game\n", numRounds);
 }
 /*
 Void reset(): This function takes in nothing and clears the players' and the computer's hands.
@@ -56,10 +57,10 @@ void reset() {
   }
   //clear computers hand and clear array of already dealt cards
   for(i = 0; i < MAX_CARDS; i++) {
-    handComp[i][0] = '0';
-    handComp[i][1] = '0';
-    dealt[i][0] = '0';
-    dealt[i][1] = '0';
+    handComp[i][0] = 0;
+    handComp[i][1] = 0;
+    dealt[i][0] = 0;
+    dealt[i][1] = 0;
   }
   //reset number of computer cards
   compCards = 0;
