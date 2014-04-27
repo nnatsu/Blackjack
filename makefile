@@ -1,5 +1,5 @@
-finalProject: main.o hit.o evaluate1.o winnings1.o dealing.o userInput.o
-	gcc -o finalProject main.o hit.o evaluate1.o winnings1.o dealing.o userInput.o
+finalProject: main.o hit.o evaluate1.o winnings1.o dealing.o userInput.o rounds.o
+	gcc -o finalProject main.o hit.o evaluate1.o winnings1.o dealing.o userInput.o rounds.o
 main.o: main.c main.h evaluate1.h hit.h rounds.h winnings1.h dealing.h userInput.h
 	gcc -c main.c
 hit.o: hit.c hit.h main.h dealing.h
