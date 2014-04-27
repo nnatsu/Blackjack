@@ -3,11 +3,11 @@
 
 /***Takes in who won from compareFinalHands, given the winnter it tells the player how much money they won or lost***/
 int distributeWinnings(int winner, int currentPlayer){
-    if (winner == currentPlayer){
-        printf("Player %d wins $%d\n", currentPlayer, players[currentPlayer].bet);
+    if (winner == 1){
+        printf("Player %d wins $%d\n", currentPlayer+1, (players[currentPlayer].bet)*3);
         return (players[currentPlayer].bet)*3;
     } else {
-        printf("Player %d lost $%d\n", currentPlayer, -players[currentPlayer].bet);
+        printf("Player %d lost $%d\n", currentPlayer+1, -(players[currentPlayer].bet)*2);
         return -(players[currentPlayer].bet)*2;
     }
 }
@@ -16,5 +16,5 @@ int distributeWinnings(int winner, int currentPlayer){
 void keepTrackOfWinnings(int winnings, int currentPlayer){
     players[currentPlayer].currentM = players[currentPlayer].currentM + winnings;
     
-    printf("Player %d now has $%d total\n", currentPlayer, players[currentPlayer].currentM);
+    printf("Player %d now has $%d total\n", currentPlayer+1, players[currentPlayer].currentM);
 }
