@@ -44,11 +44,12 @@ void displayFinalScore() {
 Void reset(): This function takes in nothing and clears the players' and the computer's hands.
 */
 void reset() {
+  int i, j;
   //loop through players and clear their hands
   for(j = 0; j < MAX_PLAYERS; j++) {
     for(i = 0; i < MAX_CARDS; i++) {
-      players[j].hand[i][0] = '0';
-      players[j].hand[i][1] = '0';
+      players[j].hand[i][0] = 0;
+      players[j].hand[i][1] = 0;
       players[j].bet = 0;
       players[j].numCards = 0;
     }
