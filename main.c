@@ -24,7 +24,8 @@ int main(){
     //display each players hand
     displayHand();
     //loop through each player
-    for (int i = 0; i < numPlayers; i++){
+    int i;
+    for  (i = 0; i < numPlayers; i++){
         printf("Player %d:\n", i+1);
         int hit = hitDecide(i);
         while (hit == 1) {
@@ -36,7 +37,7 @@ int main(){
     //hit for the computer
     computerHit();
     
-    for (int i = 0; i < numPlayers; i++){
+    for (i = 0; i < numPlayers; i++){
         int winner = evaluate(i);
         int money = distributeWinnings(winner, i);
         keepTrackOfWinnings(money, i);
