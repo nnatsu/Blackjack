@@ -18,8 +18,8 @@ rounds.o: rounds.c rounds.h main.h
 winnings1.o: winnings1.c winnings1.h evaluate1.h
 			gcc -c winnings.c
 			
-dealing.o: dealings.c dealings.h main.h
-			gcc -c dealings.c
+dealing.o: dealing.c dealing.h main.h
+			gcc -c dealing.c
 			
 userInput.o: userInput.c userInput.h main.h
 			gcc -c userInput.c
