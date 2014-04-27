@@ -1,5 +1,5 @@
 main: main.o hit.o evaluate1.o rounds.o winnings1.o dealing.o userInput.o
-<tab>gcc -o main main.o hit.o evaluate1.o rounds.o winnings1.o dealing.o userInput.o
+	gcc -o main main.o hit.o evaluate1.o rounds.o winnings1.o dealing.o userInput.o
 main.o: main.c main.h evaluate1.h hit.h rounds.h winnings1.h dealing.h userInput.h
 <tab>gcc -c justify.c
 hit.o: hit.c hit.h main.h dealing.h
