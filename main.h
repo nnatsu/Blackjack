@@ -15,8 +15,8 @@ struct player {
     int bet;                    //the bet for the current round
     int currentM;               //the amount of money the player currently has
     char hand[MAX_CARDS][2];    //the hands the player currently has
-    int numCards;               //the number of cards that they player has been dealt
-    
+    int numCards;  //the number of cards that they player has been dealt
+    int numAces;
     /*** Connie: Additional things ***/
     int id;             //Player id
     int status;         //0 = bust, 1 = safe
