@@ -9,14 +9,7 @@
 //#include "evaluate.h"
 //#include "winnings.h"
 
-int main(){
-    //CONNIE init stuff used in evaluate.h
-    //init_stat();
-    
-    //ask for number of players
-    numberOfPlayers();
-    //ask players to choose a level
-    selectLevel();
+void playGame(){
     //take each players bet
     betTaker();
     //deal all players their  intial hand
@@ -25,7 +18,7 @@ int main(){
     displayHand();
     //loop through each player
     int i;
-    for  (i = 0; i < numPlayers; i++){
+    for (i = 0; i < numPlayers; i++){
         printf("Player %d:\n", i+1);
         int hit = hitDecide(i);
         while (hit == 1) {
@@ -41,6 +34,31 @@ int main(){
         int winner = evaluate(i);
         int money = distributeWinnings(winner, i);
         keepTrackOfWinnings(money, i);
+    }
+}
+
+int main(){
+
+    numRounds = 1;
+    
+    //ask for number of players
+    numberOfPlayers();
+    //ask players to choose a level
+    selectLevel();
+    //play game
+    playGame();
+
+    
+    int round = playAgain();
+    while (round == 1){
+        reset();
+        numRounds++;
+        playGame();
+        round = playAgain();
+    }
+    
+    if (round == 0){
+        displayFinalScore();
     }
     return 0;
 }
