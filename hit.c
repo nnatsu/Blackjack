@@ -5,11 +5,22 @@
 
 int printed;
 int numAce = 0;
+int totalChange = 0;
 
 /*
 int hitDecide(): this function askes the user if they want to hit or not. Returns a 1 if they answer with a y, returns a 0 if they answer with a n.
 */
-int hitDecide() {
+int hitDecide(int i) {
+  int total = totalValue(i);
+  printf("Your current total is %d\n, total");
+  if(totalChange == 1) {
+    printf("We adjusted the point value of your aces to keep you from busting.\n");
+    totalCount == 0;
+  }
+  if(total > 21) {
+    printf("Your total is over 21, you have busted and cannot hit anymore\n");
+    return 0;
+  }
   printf("Do you want a hit(another card)? (Answer y or n)\n");
   char c;
   int x = 0;
@@ -72,19 +83,30 @@ int cardValue(char c) {
 /*
 int totalValue() : this finds the total value of the hand and returns it.
 */
-int totalValue() {
+int totalValue(int j) {
     char c;
     int total =  0;
+    int num;
     numAce = 0;
+    if(j == 100) {
+      num = compCards;
+    } else {
+      num = players[j].numCards;
+    }
     //loop through cards and calculates their values
-    for(int i = 0; i < compCards; i++) {
-      c = handComp[i][0];
+    for(int i = 0; i < num; i++) {
+      if (i == 100) {
+        c = handComp[i][0];
+      } else {
+        c = players[j].hand[i][0];
+      }
       if (c == 'a') {
           numAce++;
       }
       total += cardValue(c);
       while (total > 21 && numAce > 0) {
-          total -= 10; //adjusts computer's total if they bust but can count an ace as 1 instead of 11
+          total -= 10; //adjusts total if they bust but can count an ace as 1 instead of 11
+          totalChange == 1;
       }
     }
     return total;
