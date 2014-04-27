@@ -2,24 +2,17 @@
 
 main: main.o hit.o evaluate1.o rounds.o winnings1.o dealing.o userInput.o
 <tab>gcc -o main main.o hit.o evaluate1.o rounds.o winnings1.o dealing.o userInput.o
-			
 main.o: main.c main.h evaluate1.h hit.h rounds.h winnings1.h dealing.h userInput.h
 <tab>gcc -c justify.c
-			
 hit.o: hit.c hit.h main.h dealing.h
 <tab>gcc -c hit.c
-			
 evaluate1.o: evaluate1.c evaluate1.h winnings1.h main.h hit.h
 <tab>gcc -c evaluate.c
-			
 rounds.o: rounds.c rounds.h main.h
 <tab>gcc -c rounds.c
-			
 winnings1.o: winnings1.c winnings1.h evaluate1.h
 <tab>gcc -c winnings.c
-			
 dealing.o: dealing.c dealing.h main.h
 <tab>gcc -c dealing.c
-			
 userInput.o: userInput.c userInput.h main.h
 <tab>gcc -c userInput.c
