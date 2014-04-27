@@ -1,7 +1,7 @@
 //Makefile
 
 main: main.o hit.o evaluate1.o rounds.o winnings1.o dealing.o userInput.o
-	gcc -o main main.o hit.o evaluate1.o rounds.o winnings1.o dealing.o userInput.o
+        gcc -o main main.o hit.o evaluate1.o rounds.o winnings1.o dealing.o userInput.o
 			
 main.o: main.c main.h evaluate1.h hit.h rounds.h winnings1.h dealing.h userInput.h
 	gcc -c justify.c
