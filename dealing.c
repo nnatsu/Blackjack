@@ -8,13 +8,14 @@ int inHand[NUM_SUITS][NUM_RANKS] = {0};
 const char rankCode[] = {'2', '3', '4', '5', '6', '7', '8', '9', 't', 'j', 'q', 'k', 'a'};
 const char suitCode[] = {'C', 'D', 'H', 'S'};
 
-void dealCard(int p, int numCards){
+void dealCard(int p, int num){
     int rank, suit;
     srand((unsigned) time(NULL));
     
     //check to see if we are dealing a card to the computer
     if (p == 100){
-        while (numCards >= 0){
+        compCards += num+1;
+        while (num >= 0){
             suit = rand() % NUM_SUITS;      //pick random suit
             rank = rand() % NUM_RANKS;      //pick random rank
 
@@ -34,12 +35,13 @@ void dealCard(int p, int numCards){
                     handComp[i][0] = suitCode[suit];
                     handComp[i][1] = rankCode[rank];
                 }
-                numCards--;
+                num--;
             }
         }
     //otherwise we are dealing a card to a player
     } else {
-        while (numCards >= 0){
+        players[p].numCards += num+1;
+        while (num >= 0){
             suit = rand() % NUM_SUITS;      //pick random suit
             rank = rand() % NUM_RANKS;      //pick random rank
 
@@ -59,7 +61,7 @@ void dealCard(int p, int numCards){
                     players[p].hand[i][0] = suitCode[suit];
                     players[p].hand[i][1] = rankCode[rank];
                 }
-                numCards--;
+                num--;
             }
         }
     }
