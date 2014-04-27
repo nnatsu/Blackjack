@@ -4,6 +4,7 @@
 #define MIN_BET 5
 #define NUM_SUITS 4
 #define NUM_RANKS 13
+void playGame();
 char handComp[MAX_CARDS][2];
 int compCards;
 int numRounds;              //the number of rounds that have been played so far
