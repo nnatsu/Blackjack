@@ -12,10 +12,10 @@ int hitDecide(): this function askes the user if they want to hit or not. Return
 */
 int hitDecide(int i) {
   int total = totalValue(i);
-  printf("Your current total is %d\n, total");
+  printf("Your current total is %d\n", total);
   if(totalChange == 1) {
     printf("We adjusted the point value of your aces to keep you from busting.\n");
-    totalCount == 0;
+    totalChange = 0;
   }
   if(total > 21) {
     printf("Your total is over 21, you have busted and cannot hit anymore\n");
@@ -51,27 +51,28 @@ int hitDecide(int i) {
 void computerHit: This function determines if the computer needs another card. Keeps giving the computer another card until they have the minimum dictated by the rules.
 */
 void computerHit() {
-  int total = 0;
-  total = totalValue(100); //calculate the total value of the hand
+  int total = totalValue(100); //calculate the total value of the hand
   //determines when the dealer shoulds hit
     while(total < 17) {
-      dealCard(100, compCards);
-      compCards++;
+      dealCard(100, 0);
+      //compCards++;
       total = totalValue(100);
     }
   //if level is hard, dealer hits on soft 17s
-  if(levels == 1 && total == 17 && numAces > 0) {
-      dealCard(100, compCards);
-      compCards++;
+  if(levels == 1 && total == 17 && numAce > 0) {
+      dealCard(100, 0);
+      //compCards++;
+      total = totalValue(100);
   }
 }
 /* 
 int cardValue(char c): this function takes in the letter representation of a card and returns its numerical value.
 */
 int cardValue(char c) {
-  int value;
+  int value = 0;
   //find integer value
-  if('2' <= c <= '9') {
+  //if('2' <= c <= '9') {
+    if (c == '2' || c == '3' || c == '4' || c == '5'|| c == '6' || c == '7' || c == '8' || c == '9'){
     value = c - 48;
   } else if (c == 't' || c == 'k' || c == 'j' || c == 'q' ){
     value = 10;
@@ -86,7 +87,7 @@ int totalValue() : this finds the total value of the hand and returns it.
 int totalValue(int j) {
     char c;
     int total =  0;
-    int num;
+    int num = 0;
     numAce = 0;
     if(j == 100) {
       num = compCards;
@@ -95,10 +96,10 @@ int totalValue(int j) {
     }
     //loop through cards and calculates their values
     for(int i = 0; i < num; i++) {
-      if (i == 100) {
-        c = handComp[i][0];
+      if (j == 100) {
+        c = handComp[i][1];
       } else {
-        c = players[j].hand[i][0];
+        c = players[j].hand[i][1];
       }
       if (c == 'a') {
           numAce++;
@@ -106,7 +107,7 @@ int totalValue(int j) {
       total += cardValue(c);
       while (total > 21 && numAce > 0) {
           total -= 10; //adjusts total if they bust but can count an ace as 1 instead of 11
-          totalChange == 1;
+          totalChange = 1;
       }
     }
     return total;
