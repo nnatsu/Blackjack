@@ -95,7 +95,8 @@ int totalValue(int j) {
       num = players[j].numCards;
     }
     //loop through cards and calculates their values
-    for(int i = 0; i < num; i++) {
+    int i;
+    for(i = 0; i < num; i++) {
       if (j == 100) {
         c = handComp[i][1];
       } else {
