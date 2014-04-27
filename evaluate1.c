@@ -13,6 +13,8 @@ int evaluate(int j) {
     return 2;
   } else if (playerVal > 21){
       return 0;
+  } else if (computerVal > 21){
+      return 1;
   }else if (computerVal > playerVal) {
     return 0;
   } else if (playerVal > computerVal) {
